@@ -23,7 +23,7 @@
     "node-sass-chokidar": "^1.5.0",
     "npm-run-all": "^4.1.5",
     "prop-types": "^15.7.2",
-    "react": "^18.0.0",
+    "react": "^16.8.6",
     "react-app-polyfill": "^1.0.1",
     "react-bootstrap-table-next": "^4.0.3",
     "react-bootstrap-table2-overlay": "^2.0.0",
@@ -62,6 +62,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "bugs": {
+    "url": "https://github.com/coreui/coreui-pro-react-admin-template/issues"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -70,5 +73,17 @@
     "not dead",
     "not ie <= 10",
     "not op_mini all"
-  ]
+  ],
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!**/*index.js",
+      "!src/serviceWorker.js",
+      "!src/polyfill.js"
+    ]
+  },
+  "engines": {
+    "node": ">=8.10",
+    "npm": ">=6"
+  }
 }
