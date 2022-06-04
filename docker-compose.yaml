@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  web-absensi-mobile:
+    image: app-web-absensi-mobile
+    container_name: web-absensi-mobile
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3006:3006
+    env_file: .env
+    environment:
+      - PORT=$PORT
+      - REACT_APP_API_URL2=$REACT_APP_API_URL2
+      - REACT_APP_API_KEY=$REACT_APP_API_KEY
+      - GENERATE_SOURCEMAP=$GENERATE_SOURCEMAP
+      - SKIP_PREFLIGHT_CHECK=$SKIP_PREFLIGHT_CHECK

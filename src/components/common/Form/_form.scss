@@ -1,0 +1,195 @@
+input.text-field {
+  min-height: 2.6rem !important;
+  font-size: 0.925rem;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.text-filed-label {
+  margin-left: .2rem;
+}
+
+.toggle-pass {
+  position: absolute;
+  right: 17px;
+  top: 41px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all .1s ease-in;
+  color: #5c6873;
+
+  &:active {
+    transform: translateY(-2.5px);
+  }
+}
+
+input.is-valid+.toggle-pass {
+  right: 37px;
+}
+
+input.is-invalid+.toggle-pass {
+  right: 37px;
+}
+
+//Checkbox
+@keyframes click-wave {
+  0% {
+    box-shadow: 0 0 0 0.2rem rgba($success, .5);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0.5rem rgba($success, 0);
+  }
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+  border-color: $success;
+  background-color: $success;
+}
+
+.custom-control-input {
+  &:focus~.custom-control-label {
+    &::before {
+      box-shadow: 0 0 0 0.2rem transparent;
+      animation: click-wave .8s ease-out 1 alternate;
+    }
+
+  }
+
+  &:hover~.custom-control-label {
+    &:hover {
+      box-shadow: 0 0 0 0.2rem transparent;
+      cursor: pointer;
+    }
+  }
+
+  &:focus:not(:checked)~.custom-control-label::before {
+    border-color: $success;
+  }
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+}
+
+.custom-control-label {
+  &:hover {
+    &::before {
+      cursor: pointer;
+    }
+  }
+
+  &::before {
+    width: 1.2rem;
+    height: 1.2rem;
+    top: 0.01rem;
+    left: -1.6rem;
+  }
+
+  &::after {
+    width: 1.5rem;
+    height: 1.5rem;
+    top: -0.1rem;
+    left: -1.75rem;
+  }
+}
+
+//Select Field
+.select-field.w-100.css-2b097c-container {
+  & .css-yk16xz-control {
+    min-height: 2.6rem !important;
+    border: 1px solid rgba(0, 0, 0, 0.25) !important;
+
+    & .css-g1d714-ValueContainer .css-1wa3eu0-placeholder {
+      color: #5c6873;
+    }
+
+    & .css-1hb7zxy-IndicatorsContainer {
+      & .css-tlfecz-indicatorContainer {
+        & .css-6q0nyr-Svg {
+          fill: #5c6873;
+        }
+      }
+
+      & .css-1okebmr-indicatorSeparator {
+        background-color: #cccccc;
+      }
+    }
+  }
+
+}
+
+.select-field.css-2b097c-container {
+  & .css-1pahdxg-control {
+    border-color: #8ad4ee;
+    box-shadow: 0 0 0 0.2rem rgba(112, 193, 223, 0.25);
+    min-height: 2.6rem !important;
+  }
+
+  & .css-yk16xz-control .css-g1d714-ValueContainer {
+    & .css-1uccc91-singleValue {
+      color: #5c6873;
+    }
+  }
+
+  & .css-yk16xz-control {
+    border: 1px solid rgba(0, 0, 0, 0.25) !important;
+  }
+
+  & .css-1pahdxg-control .css-g1d714-ValueContainer {
+    & .css-1uccc91-singleValue {
+      color: #5c6873;
+    }
+  }
+
+}
+
+.select-field.w-100.css-2b097c-container.is-invalid {
+  & .css-yk16xz-control {
+    border-color: #f86c6b !important;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23f86c6b' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23f86c6b' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");
+    background-repeat: no-repeat;
+    // background-position: center right calc(0.375em + 0.1875rem);
+    background-position: 98.5% calc(0.4em + 0.4rem);
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    min-height: 2.6rem !important;
+    transition: none;
+
+    // & .css-1hb7zxy-IndicatorsContainer {
+    //   display: none;
+    // }
+    & .css-1wy0on6 {
+      display: none;
+    }
+  }
+}
+
+.select-field.w-100.css-2b097c-container.is-valid {
+  & .css-yk16xz-control {
+    border-color: #28a745 !important;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    // background-position: center right calc(0.375em + 0.1875rem);
+    background-position: 98.5% calc(0.4em + 0.4rem);
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    min-height: 2.6rem !important;
+    transition: none;
+
+    // & .css-1hb7zxy-IndicatorsContainer {
+    //   display: none;
+    // }
+    & .css-1wy0on6 {
+      display: none;
+    }
+  }
+}
+
+//disabled select field
+.select-field.css-14jk2my-container {
+  & .css-1fhf3k1-control .css-g1d714-ValueContainer {
+    & .css-107lb6w-singleValue {
+      color: #5c6873 !important;
+    }
+  }
+}

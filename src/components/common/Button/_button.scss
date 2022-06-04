@@ -1,0 +1,81 @@
+button.btn:not(#pageDropDown) {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+
+  &:hover {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+  }
+}
+
+button.btn.disabled,
+span.btn.disabled {
+  cursor: not-allowed;
+}
+
+button.btn {
+  line-height: 100%;
+  padding: 0.55rem 0.75rem;
+}
+
+@each $color,
+$value in $theme-colors {
+  .btn.btn-#{$color} {
+    &.btn-shadow {
+      box-shadow: 0px 8px 15px rgba($value, 0.4) !important;
+
+      &:hover {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.3) !important;
+      }
+    }
+
+    &.ripple {
+      position: relative;
+      overflow: hidden;
+
+      &:after {
+        content: "";
+        background: rgba(255, 255, 255, 0.9);
+        display: block;
+        position: absolute;
+        border-radius: 50%;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 500px;
+        height: 500px;
+        margin: auto;
+        opacity: 0;
+        transition: all 0.5s ease-out;
+      }
+
+      &:active {
+        background-color: $value;
+        background-size: 100%;
+        transition: all 0s;
+        transform: translateY(-3px);
+
+        &:after {
+          height: 10px;
+          width: 10px;
+          opacity: 0.9;
+          transition: 0s;
+          outline: transparent;
+        }
+      }
+    }
+
+    &.disabled {
+      box-shadow: 0px 8px 15px rgba($value, .3);
+
+      &:hover {
+        box-shadow: 0px 8px 15px rgba($value, .3);
+      }
+
+      &:active {
+        background-color: $value;
+        transition: none;
+        transform: translateY(0px);
+      }
+    }
+  }
+}

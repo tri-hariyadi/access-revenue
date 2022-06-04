@@ -1,0 +1,236 @@
+// Here you can add other styles
+@import "../components/common/Button/button";
+
+@media only screen and (max-width: 712px) {
+  .container-fluid {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+
+//swall custom
+.swal-modal {
+  border-radius: 15px;
+}
+
+.swal-text {
+  text-align: center;
+  max-width: 90%;
+  line-height: 1.6;
+}
+
+.swal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+  padding: 20px 16px;
+  margin-bottom: 5px;
+
+  & .swal-button-container {
+    min-width: 18%;
+
+    & .swal-button {
+      width: 100%;
+      font-size: 16px;
+      padding: .625em 1.1em;
+      font-weight: normal;
+
+      &.swal-button--confirm {
+        background-color: #2778c4;
+      }
+
+      &.swal-button--cancel {
+        background-color: #757575;
+        color: #fff;
+      }
+
+      &.swal-button--danger {
+        background-color: #e64942 !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .swal-modal {
+    width: calc(100% - 60px);
+  }
+
+  .swal-title {
+    font-size: 22px;
+  }
+
+  .swal-text {
+    font-size: 15px;
+  }
+
+  .swal-icon {
+    margin: 0 auto;
+  }
+
+  .swal-footer {
+    padding: 15px 16px;
+
+    & .swal-button-container .swal-button {
+      font-size: 14.5px;
+    }
+  }
+}
+
+//bootstrap-table
+.form-group.form-group-sm.react-bs-table-search-form {
+  margin-bottom: 10px;
+
+  & input.form-control {
+    border: solid 1px rgba(0, 0, 0, 0.25);
+    font-family: FontAwesome, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    text-decoration: inherit;
+    color: #78909c;
+
+    &::-webkit-input-placeholder {
+      font-family: FontAwesome, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      text-decoration: inherit;
+      color: #78909c;
+    }
+
+    &::-moz-placeholder {
+      font-family: FontAwesome, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      text-decoration: inherit;
+      color: #78909c;
+    }
+
+    &:-moz-placeholder {
+      font-family: FontAwesome, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      text-decoration: inherit;
+      color: #78909c;
+    }
+  }
+
+}
+
+.table-bordered th, .table-bordered td {
+  border: 1px solid #a8a29e;
+}
+
+.table thead th {
+  border-bottom: 2px solid #a8a29e;
+}
+
+.btn-group {
+  &.btn-group-sm {
+    // display: none;
+  }
+}
+
+hr {
+  background: hsl(0, 0%, 80%);
+}
+
+.badge.status-attendance {
+  padding: 0.5em 0.8em;
+}
+
+.logo-app-minimized {
+  display: none;
+}
+
+.card {
+  border: 1px solid #b0bec5;
+}
+
+.card-header {
+  background-color: #D8EDF5;
+  border-bottom: 1px solid #80d8ff;
+  color: #3D6577;
+
+  & i {
+    color: inherit;
+  }
+
+  & h5 {
+    color: inherit;
+    margin-top: 0.25rem !important;
+  }
+}
+
+//menu grid
+div.card.menu-settings {
+  &:hover {
+    transform: translateY(-3px);
+    cursor: pointer;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    transition: all .3s ease-in-out;
+  }
+}
+
+.wrapperClassName {
+  background-color: gainsboro;
+  padding: 11px;
+  border-radius: 4px;
+}
+
+.rdw-dropdown-wrapper {
+  border-radius: 5px !important;
+  border-color: rgb(0, 47, 126) !important;
+}
+
+.toolbarClassName {
+  border: none !important;
+  background-color: gainsboro !important;
+  border-radius: 3px !important;
+  padding-top: 5px !important;
+  padding-left: 0px !important;
+}
+
+.rdw-option-wrapper {
+  height: 23px !important;
+  border-color: rgb(0, 47, 126) !important;
+
+  &.rdw-option-active {
+    background: -webkit-gradient(linear, left top, left bottom, from(#00ADEE), to(#9EBEF5));
+  }
+}
+
+.public-DraftEditorPlaceholder-root {
+  position: unset;
+  color: #5c6873;
+}
+
+.public-DraftStyleDefault-block {
+  margin: 0 !important;
+}
+
+.editorClassName {
+  min-height: 270px !important;
+  border: 1px solid white;
+  // padding: 0 0 0 10px;
+  background: white;
+  padding: 10px
+}
+
+.container-uploader {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: calc(100vh - 200px);
+}
+
+.drop_zone_a {
+  min-height: 80px !important;
+  width: 100%;
+}
