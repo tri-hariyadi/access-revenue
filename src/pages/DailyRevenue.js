@@ -1,10 +1,11 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { FileUploader } from "react-drag-drop-files";
 import * as XLSX from "xlsx";
 import BootstrapTable from 'react-bootstrap-table-next';
-import paginationFactory, { PaginationProvider } from 'react-bootstrap-table2-paginator';
-import { tableStyle, options } from '../components/common/TableConfig';
+// import paginationFactory, { PaginationProvider } from 'react-bootstrap-table2-paginator';
+import { tableStyle } from '../components/common/TableConfig';
 import Button from '../components/common/Button';
+import { currencyFormat } from '../configs/utils';
 
 const DailyRevenue = () => {
   const fileTypes = ["xlsx"];
@@ -58,10 +59,7 @@ const DailyRevenue = () => {
       sort: true,
       headerStyle: tableStyle(200),
       style: tableStyle(200),
-      footer: columnData => {
-        // console.log(columnData);
-        return columnData.reduce((acc, item) => acc + item, 0)
-      },
+      footer: columnData => columnData.reduce((acc, item) => acc + item, 0),
       footerStyle: {
         backgroundColor: '#e0f2fe',
       }
@@ -72,7 +70,8 @@ const DailyRevenue = () => {
       sort: true,
       headerStyle: tableStyle(200),
       style: tableStyle(200),
-      footer: columnData => columnData.reduce((acc, item) => acc + item, 0),
+      formatter: (data) => Math.round(data),
+      footer: columnData => Math.round(columnData.reduce((acc, item) => acc + item, 0)),
       footerStyle: {
         backgroundColor: '#e0f2fe',
       }
@@ -83,7 +82,8 @@ const DailyRevenue = () => {
       sort: true,
       headerStyle: tableStyle(200),
       style: tableStyle(200),
-      footer: columnData => columnData.reduce((acc, item) => acc + item, 0),
+      formatter: (data) => Math.round(data),
+      footer: columnData => Math.round(columnData.reduce((acc, item) => acc + item, 0)),
       footerStyle: {
         backgroundColor: '#e0f2fe',
       }
@@ -94,7 +94,8 @@ const DailyRevenue = () => {
       sort: true,
       headerStyle: tableStyle(200),
       style: tableStyle(200),
-      footer: columnData => columnData.reduce((acc, item) => acc + item, 0),
+      formatter: (data) => currencyFormat(data),
+      footer: columnData => currencyFormat(Math.round(columnData.reduce((acc, item) => acc + item, 0))),
       footerStyle: {
         backgroundColor: '#e0f2fe',
       }
