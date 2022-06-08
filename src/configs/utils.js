@@ -27,3 +27,16 @@ export const currencyFormat = value => {
   });
   return formatter.format(num);
 }
+
+export const formatNumber = (value) => {
+  if (typeof value === 'string') {
+    if (!isNaN(Number(value))) {
+      return Number(value.replace(/,/gi, '.'));
+    }
+    return 0;
+  }
+  if (typeof value === 'number') {
+    return value;
+  }
+  return 0;
+}

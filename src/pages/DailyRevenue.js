@@ -6,7 +6,7 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider from 'react-bootstrap-table2-toolkit';
 import { tableStyle, CustomBar } from '../components/common/TableConfig';
 import Button from '../components/common/Button';
-import { currencyFormat } from '../configs/utils';
+import { currencyFormat, formatNumber } from '../configs/utils';
 
 const DailyRevenue = () => {
   const fileTypes = ["xlsx"];
@@ -84,7 +84,7 @@ const DailyRevenue = () => {
       sort: true,
       headerStyle: tableStyle(200),
       style: tableStyle(200),
-      formatter: (data) => Math.round(data),
+      formatter: (data) => Math.round(parseInt(data)),
       footer: columnData => Math.round(columnData.reduce((acc, item) => acc + item, 0)),
       footerStyle: {
         backgroundColor: '#e0f2fe',
@@ -96,7 +96,7 @@ const DailyRevenue = () => {
       sort: true,
       headerStyle: tableStyle(200),
       style: tableStyle(200),
-      formatter: (data) => Math.round(data),
+      formatter: (data) => Math.round(parseInt(data)),
       footer: columnData => Math.round(columnData.reduce((acc, item) => acc + item, 0)),
       footerStyle: {
         backgroundColor: '#e0f2fe',
@@ -108,7 +108,7 @@ const DailyRevenue = () => {
       sort: true,
       headerStyle: tableStyle(200),
       style: tableStyle(200),
-      formatter: (data) => currencyFormat(Math.round(data)),
+      formatter: (data) => currencyFormat(Math.round(parseInt(data))),
       footer: columnData => currencyFormat(Math.round(columnData.reduce((acc, item) => acc + item, 0))),
       footerStyle: {
         backgroundColor: '#e0f2fe',
@@ -180,19 +180,19 @@ const DailyRevenue = () => {
               'Tgl. Pickup': item['Tgl. Pickup'],
               'Kota Asal': item['Nama Kota Origin'],
               'Marketing': item['Nama Marketing'],
-              'Colly': parseInt(item['Kuantitas']),
-              'Actual Weight': parseInt(item['Berat Real']),
-              'Volume Metrik': parseInt(item['Volume Metrik']),
-              'Biaya': parseInt(item['Biaya'])
+              'Colly': formatNumber(item['Kuantitas']),
+              'Actual Weight': formatNumber(item['Berat Real']),
+              'Volume Metrik': formatNumber(item['Volume Metrik']),
+              'Biaya': formatNumber(item['Biaya'])
             }
             temp.current = [...temp.current, newItem];
           } else {
             const newItem = {
               ...temp.current[index],
-              'Colly': parseInt(temp.current[index]['Colly']) + parseInt(item['Kuantitas']),
-              'Actual Weight': parseInt(temp.current[index]['Actual Weight']) + parseInt(item['Berat Real']),
-              'Volume Metrik': parseInt(temp.current[index]['Volume Metrik']) + parseInt(item['Volume Metrik']),
-              'Biaya': parseInt(temp.current[index]['Biaya']) + parseInt(item['Biaya']),
+              'Colly': formatNumber(temp.current[index]['Colly']) + formatNumber(item['Kuantitas']),
+              'Actual Weight': formatNumber(temp.current[index]['Actual Weight']) + formatNumber(item['Berat Real']),
+              'Volume Metrik': formatNumber(temp.current[index]['Volume Metrik']) + formatNumber(item['Volume Metrik']),
+              'Biaya': formatNumber(temp.current[index]['Biaya']) + formatNumber(item['Biaya']),
             }
             temp.current[index] = newItem;
           }
