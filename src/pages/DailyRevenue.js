@@ -1,9 +1,10 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { FileUploader } from "react-drag-drop-files";
 import * as XLSX from "xlsx";
+import { saveAs } from 'file-saver';
 import BootstrapTable from 'react-bootstrap-table-next';
-// import paginationFactory, { PaginationProvider } from 'react-bootstrap-table2-paginator';
-import { tableStyle } from '../components/common/TableConfig';
+import ToolkitProvider from 'react-bootstrap-table2-toolkit';
+import { tableStyle, CustomBar } from '../components/common/TableConfig';
 import Button from '../components/common/Button';
 import { currencyFormat } from '../configs/utils';
 
@@ -12,9 +13,10 @@ const DailyRevenue = () => {
   const [file, setFile] = useState('');
   const [dataTable, setDataTable] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const b = React.useRef([]);
-  const dataJson = React.useRef([]);
-  const temp = React.useRef([]);
+  const b = useRef([]);
+  const dataJson = useRef([]);
+  const temp = useRef([]);
+  const dataExported = useRef([]);
 
   const columns = [
     {
@@ -30,13 +32,25 @@ const DailyRevenue = () => {
       }
     },
     {
+      dataField: 'Tgl. Pickup',
+      text: 'Tgl. Pickup',
+      sort: true,
+      headerStyle: tableStyle(200),
+      style: tableStyle(200),
+      footerAlign: () => 'right',
+      footer: 'Total',
+      footerStyle: {
+        backgroundColor: '#e0f2fe',
+        borderRightColor: 'transparent'
+      }
+    },
+    {
       dataField: 'Kota Asal',
       text: 'Kota Asal',
       sort: true,
       headerStyle: tableStyle(200),
       style: tableStyle(200),
-      footerAlign: () => 'center',
-      footer: 'Total',
+      footer: '',
       footerStyle: {
         backgroundColor: '#e0f2fe',
         borderRightColor: 'transparent'
@@ -94,7 +108,7 @@ const DailyRevenue = () => {
       sort: true,
       headerStyle: tableStyle(200),
       style: tableStyle(200),
-      formatter: (data) => currencyFormat(data),
+      formatter: (data) => currencyFormat(Math.round(data)),
       footer: columnData => currencyFormat(Math.round(columnData.reduce((acc, item) => acc + item, 0))),
       footerStyle: {
         backgroundColor: '#e0f2fe',
@@ -163,6 +177,7 @@ const DailyRevenue = () => {
             const newItem = {
               'id': i,
               'Nama Customer': item['Nama Customer'],
+              'Tgl. Pickup': item['Tgl. Pickup'],
               'Kota Asal': item['Nama Kota Origin'],
               'Marketing': item['Nama Marketing'],
               'Colly': Number(item['Kuantitas']),
@@ -188,25 +203,69 @@ const DailyRevenue = () => {
     setIsLoading(false);
   }
 
+  const exportToExcel = () => {
+    let wb = XLSX.utils.book_new();
+    wb.Props = {
+      Title: 'Excel Data Revenue Access',
+      Subject: 'File',
+      Author: 'Admin Access',
+      CreatedDate: new Date()
+    };
+    wb.SheetNames.push('File Revenue');
+    let ws = XLSX.utils.json_to_sheet([...dataExported.current], { header: Object.keys(dataExported.current[0]) });
+      wb.Sheets['File Revenue'] = ws;
+      let wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+      const s2ab = (s) => {
+        let buf = new ArrayBuffer(s.length);
+        let view = new Uint8Array(buf);
+        for (let i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+        return buf;
+      }
+      saveAs(
+        new Blob([s2ab(wbout)],
+          { type: 'application/octet-stream' }),
+        `revenue-${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}.xlsx`
+      );
+  }
+
+  const afterSearch = (newResult) => {
+    dataExported.current = newResult;
+  };
+
   useLayoutEffect(() => {
     if (dataTable.length) {
       document.querySelector('body').style.backgroundColor = '#FFF';
     }
-  }, [dataTable])
+  }, [dataTable]);
 
   return (
     <div className={!dataTable.length ? 'container-uploader': ''}>
       {dataTable.length ?
-        <BootstrapTable
+        <ToolkitProvider
+          bootstrap4
+          search={{afterSearch}}
           keyField='id'
           data={dataTable}
-          striped
-          condensed
-          hover
-          columns={columns}
-          wrapperClasses='table-responsive mt-3'
-          noDataIndication='Tidak ada data'
-        />
+          columns={columns}>
+            {toolkitprops => (
+              <div>
+                <CustomBar toolkitprops={toolkitprops}>
+                  <Button isSuccess onClick={exportToExcel}>
+                    Expoort Excel
+                  </Button>
+                </CustomBar>
+                <BootstrapTable
+                  striped
+                  condensed
+                  hover
+                  columns={columns}
+                  wrapperClasses='table-responsive mt-3'
+                  noDataIndication='Tidak ada data'
+                  {...toolkitprops.baseProps}
+                />
+              </div>
+            )}
+        </ToolkitProvider>
         :
         <>
           <FileUploader
