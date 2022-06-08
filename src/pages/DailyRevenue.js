@@ -180,19 +180,19 @@ const DailyRevenue = () => {
               'Tgl. Pickup': item['Tgl. Pickup'],
               'Kota Asal': item['Nama Kota Origin'],
               'Marketing': item['Nama Marketing'],
-              'Colly': Number(item['Kuantitas']),
-              'Actual Weight': Number(item['Berat Real']),
-              'Volume Metrik': Number(item['Volume Metrik']),
-              'Biaya': Number(item['Biaya'])
+              'Colly': parseInt(item['Kuantitas']),
+              'Actual Weight': parseInt(item['Berat Real']),
+              'Volume Metrik': parseInt(item['Volume Metrik']),
+              'Biaya': parseInt(item['Biaya'])
             }
             temp.current = [...temp.current, newItem];
           } else {
             const newItem = {
               ...temp.current[index],
-              'Colly': Number(temp.current[index]['Colly']) + Number(item['Kuantitas']),
-              'Actual Weight': Number(temp.current[index]['Actual Weight']) + Number(item['Berat Real']),
-              'Volume Metrik': Number(temp.current[index]['Volume Metrik']) + Number(item['Volume Metrik']),
-              'Biaya': Number(temp.current[index]['Biaya']) + Number(item['Biaya']),
+              'Colly': parseInt(temp.current[index]['Colly']) + parseInt(item['Kuantitas']),
+              'Actual Weight': parseInt(temp.current[index]['Actual Weight']) + parseInt(item['Berat Real']),
+              'Volume Metrik': parseInt(temp.current[index]['Volume Metrik']) + parseInt(item['Volume Metrik']),
+              'Biaya': parseInt(temp.current[index]['Biaya']) + parseInt(item['Biaya']),
             }
             temp.current[index] = newItem;
           }
