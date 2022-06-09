@@ -241,33 +241,35 @@ const DailyRevenue = () => {
   return (
     <div className={!dataTable.length ? 'container-uploader': ''}>
       {dataTable.length ?
-        <ToolkitProvider
-          bootstrap4
-          search={{afterSearch}}
-          keyField='id'
-          data={dataTable}
-          columns={columns}>
-            {toolkitprops => (
-              <div>
-                <CustomBar toolkitprops={toolkitprops}>
-                  <Button isSuccess onClick={exportToExcel}>
-                    Expoort Excel
-                  </Button>
-                </CustomBar>
-                <BootstrapTable
-                  striped
-                  condensed
-                  hover
-                  columns={columns}
-                  wrapperClasses='table-responsive mt-3'
-                  noDataIndication='Tidak ada data'
-                  {...toolkitprops.baseProps}
-                />
-              </div>
-            )}
-        </ToolkitProvider>
+        <div>
+          <ToolkitProvider
+            bootstrap4
+            search={{afterSearch}}
+            keyField='id'
+            data={dataTable}
+            columns={columns}>
+              {toolkitprops => (
+                <div>
+                  <CustomBar toolkitprops={toolkitprops}>
+                    <Button isSuccess onClick={exportToExcel}>
+                      Expoort Excel
+                    </Button>
+                  </CustomBar>
+                  <BootstrapTable
+                    striped
+                    condensed
+                    hover
+                    columns={columns}
+                    wrapperClasses='table-responsive mt-3'
+                    noDataIndication='Tidak ada data'
+                    {...toolkitprops.baseProps}
+                  />
+                </div>
+              )}
+          </ToolkitProvider>
+        </div>
         :
-        <>
+        <div>
           <FileUploader
             multiple={false}
             handleChange={filePathset}
@@ -287,7 +289,7 @@ const DailyRevenue = () => {
               }}>
               Generate Report
             </Button>
-        </>
+        </div>
       }
     </div>
   )
