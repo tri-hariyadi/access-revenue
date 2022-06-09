@@ -110,7 +110,7 @@ const options = {
 
 const tableStyle = (minWidth) => ({
   textAlign: 'left',
-  padding: '20px 10px',
+  padding: '10px 10px',
   verticalAlign: 'middle',
   whiteSpace: 'normal',
   minWidth: minWidth ? `${minWidth}px` : '120px',
