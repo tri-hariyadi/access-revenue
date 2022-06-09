@@ -241,7 +241,7 @@ const DailyRevenue = () => {
   return (
     <div className={!dataTable.length ? 'container-uploader': ''}>
       {dataTable.length ?
-        <div>
+        <div className='w-100'>
           <ToolkitProvider
             bootstrap4
             search={{afterSearch}}
@@ -269,7 +269,7 @@ const DailyRevenue = () => {
           </ToolkitProvider>
         </div>
         :
-        <div>
+        <div className='w-100'>
           <FileUploader
             multiple={false}
             handleChange={filePathset}
