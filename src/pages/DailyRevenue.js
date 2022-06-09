@@ -48,8 +48,8 @@ const DailyRevenue = () => {
       dataField: 'Kota Asal',
       text: 'Kota Asal',
       sort: true,
-      headerStyle: tableStyle(125),
-      style: tableStyle(125),
+      headerStyle: tableStyle(120),
+      style: tableStyle(120),
       footer: '',
       footerStyle: {
         backgroundColor: '#e0f2fe',
@@ -71,8 +71,8 @@ const DailyRevenue = () => {
       dataField: 'Colly',
       text: 'Colly',
       sort: true,
-      headerStyle: tableStyle(120),
-      style: tableStyle(120),
+      headerStyle: tableStyle(100),
+      style: tableStyle(100),
       footer: columnData => columnData.reduce((acc, item) => acc + item, 0),
       footerStyle: {
         backgroundColor: '#e0f2fe',
@@ -82,8 +82,8 @@ const DailyRevenue = () => {
       dataField: 'Actual Weight',
       text: 'Actual Weight',
       sort: true,
-      headerStyle: tableStyle(120),
-      style: tableStyle(120),
+      headerStyle: tableStyle(100),
+      style: tableStyle(100),
       formatter: (data) => Math.round(parseInt(data)),
       footer: columnData => Math.round(columnData.reduce((acc, item) => acc + item, 0)),
       footerStyle: {
@@ -94,8 +94,8 @@ const DailyRevenue = () => {
       dataField: 'Volume Metrik',
       text: 'Volume Metrik',
       sort: true,
-      headerStyle: tableStyle(120),
-      style: tableStyle(120),
+      headerStyle: tableStyle(100),
+      style: tableStyle(100),
       formatter: (data) => Math.round(parseInt(data)),
       footer: columnData => Math.round(columnData.reduce((acc, item) => acc + item, 0)),
       footerStyle: {
