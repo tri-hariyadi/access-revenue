@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Col, Form, FormGroup, Row } from 'reactstrap';
 import { Formik } from 'formik';
 
-import { loginUser } from '../../store';
+// import { loginUser } from '../../store';
 import { getUserPayload, LoginValidationSchema, validate } from '../../configs';
 import { Button, Checkbox, TextField } from '../../components';
 
@@ -120,4 +120,4 @@ const LoginPage = ({
   return <Redirect to='/dashboard' />
 }
 
-export default connect(null, { loginUser })(LoginPage);
+export default connect(null)(LoginPage);

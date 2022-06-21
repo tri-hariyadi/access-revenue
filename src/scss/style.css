@@ -5,13 +5,15 @@
 @import url(~simple-line-icons/css/simple-line-icons.css);
 @font-face {
   font-family: FSAlbert;
-  src: url(./fonts/FSAlbert-Regular.otf) format("truetype");
+  src: url(./fonts/Poppins-Regular.ttf) format("truetype");
   font-weight: 400;
   font-style: normal; }
 
 @font-face {
   font-family: FSAlbertBold;
-  src: url(./fonts/FSAlbert-Bold.otf) format("truetype"); }
+  src: url(./fonts/FSAlbert-Bold.otf) format("truetype");
+  font-weight: 600;
+  font-style: normal; }
 
 @font-face {
   font-family: FSAlbertExtraBold;
@@ -12047,7 +12049,16 @@ button.btn {
 @media only screen and (max-width: 712px) {
   .container-fluid {
     padding-left: 10px !important;
-    padding-right: 10px !important; } }
+    padding-right: 10px !important; }
+  #upload_drag_drop label {
+    min-height: 100px;
+    min-width: 100% !important;
+    padding: 20px; } }
+
+#upload_drag_drop label {
+  min-height: 100px;
+  min-width: 500px;
+  padding: 20px; }
 
 .swal-modal {
   border-radius: 15px; }
@@ -12136,6 +12147,12 @@ button.btn {
 .table thead th {
   border-bottom: 2px solid #a8a29e; }
 
+div.tabel-monthly-wrapper {
+  border: 1px solid #94a3b8;
+  border-radius: 5px; }
+  div.tabel-monthly-wrapper table.table.table-striped {
+    margin-bottom: 0; }
+
 hr {
   background: #cccccc; }
 
@@ -12146,12 +12163,15 @@ hr {
   display: none; }
 
 .card {
-  border: 1px solid #b0bec5; }
+  border: 1px solid #b0bec5;
+  border-radius: 10px; }
 
 .card-header {
-  background-color: #D8EDF5;
-  border-bottom: 1px solid #80d8ff;
-  color: #3D6577; }
+  background-color: #f0f3f5;
+  border-bottom: 1px solid #c8ced3;
+  color: #23282c;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important; }
   .card-header i {
     color: inherit; }
   .card-header h5 {
@@ -12210,6 +12230,10 @@ div.card.menu-settings:hover {
 .drop_zone_a {
   min-height: 80px !important;
   width: 100%; }
+
+.lt-space-1 {
+  min-width: 210px;
+  vertical-align: middle !important; }
 
 html body {
   font-family: FSAlbert; }
@@ -12974,6 +12998,59 @@ input.is-invalid + .toggle-pass {
 .select-field.css-14jk2my-container .css-1fhf3k1-control .css-g1d714-ValueContainer .css-107lb6w-singleValue {
   color: #5c6873 !important; }
 
+.invalid-feedback {
+  font-size: 92%; }
+
+.input-date .input-group {
+  background-color: #fff; }
+  .input-date .input-group .input-group-text {
+    pointer-events: none;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 4px !important;
+    width: 45px;
+    min-height: 2.46rem !important;
+    display: flex;
+    justify-content: center;
+    background-color: #9ca3af;
+    position: absolute;
+    z-index: 999;
+    margin-top: 1px; }
+  .input-date .input-group .form-control {
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    box-shadow: none;
+    background-color: #f8f9fa;
+    padding: 0.575rem 53px;
+    text-align: left;
+    justify-content: center;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    min-height: 2.6rem !important;
+    cursor: pointer; }
+    .input-date .input-group .form-control.is-invalid {
+      border-color: #dc3545; }
+      .input-date .input-group .form-control.is-invalid:focus {
+        border-color: #dc3545;
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25); }
+    .input-date .input-group .form-control.is-valid {
+      border-color: #28a745; }
+      .input-date .input-group .form-control.is-valid:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25); }
+  .input-date .input-group .date-range-wrapper {
+    padding: 4px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    border-radius: 4px;
+    top: 45px;
+    z-index: 9999;
+    border: 1px solid rgba(0, 0, 0, 0.15); }
+
 .logo-app-full {
   display: flex;
   align-items: center;
@@ -12983,8 +13060,11 @@ input.is-invalid + .toggle-pass {
     font-size: 1.1rem;
     margin-top: 4px; }
 
-.app-header .navbar-brand {
-  width: 195px; }
+.app-header .navbar-brand-logo-app {
+  width: 200px;
+  align-items: center;
+  justify-content: center;
+  display: flex; }
 
 @media (max-width: 991.98px) {
   .app-header.navbar {

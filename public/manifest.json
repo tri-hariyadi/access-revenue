@@ -3,7 +3,7 @@
   "name": "Admin Absensi Mobile",
   "icons": [
     {
-      "src": "./assets/img/favicon.png",
+      "src": "./assets/img/favicons.png",
       "sizes": "100x100",
       "type": "image/png"
     }

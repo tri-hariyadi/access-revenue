@@ -7,6 +7,7 @@ import ToolkitProvider from 'react-bootstrap-table2-toolkit';
 import { tableStyle, CustomBar } from '../components/common/TableConfig';
 import Button from '../components/common/Button';
 import { currencyFormat, formatNumber } from '../configs/utils';
+import swal from 'sweetalert';
 
 const DailyRevenue = () => {
   const fileTypes = ["xlsx"];
@@ -73,7 +74,7 @@ const DailyRevenue = () => {
       sort: true,
       headerStyle: tableStyle(100),
       style: tableStyle(100),
-      footer: columnData => columnData.reduce((acc, item) => acc + item, 0),
+      footer: columnData => columnData.reduce((acc, item) => formatNumber(acc) + formatNumber(item), 0),
       footerStyle: {
         backgroundColor: '#e0f2fe',
       }
@@ -84,8 +85,8 @@ const DailyRevenue = () => {
       sort: true,
       headerStyle: tableStyle(100),
       style: tableStyle(100),
-      formatter: (data) => Math.round(parseInt(data)),
-      footer: columnData => Math.round(columnData.reduce((acc, item) => acc + item, 0)),
+      formatter: (data) => formatNumber(data),
+      footer: columnData => columnData.reduce((acc, item) => formatNumber(acc) + formatNumber(item), 0),
       footerStyle: {
         backgroundColor: '#e0f2fe',
       }
@@ -96,8 +97,8 @@ const DailyRevenue = () => {
       sort: true,
       headerStyle: tableStyle(100),
       style: tableStyle(100),
-      formatter: (data) => Math.round(parseInt(data)),
-      footer: columnData => Math.round(columnData.reduce((acc, item) => acc + item, 0)),
+      formatter: (data) => formatNumber(data),
+      footer: columnData => columnData.reduce((acc, item) => formatNumber(acc) + formatNumber(item), 0),
       footerStyle: {
         backgroundColor: '#e0f2fe',
       }
@@ -108,8 +109,8 @@ const DailyRevenue = () => {
       sort: true,
       headerStyle: tableStyle(200),
       style: tableStyle(200),
-      formatter: (data) => currencyFormat(Math.round(parseInt(data))),
-      footer: columnData => currencyFormat(Math.round(columnData.reduce((acc, item) => acc + item, 0))),
+      formatter: (data) => currencyFormat(formatNumber(data)),
+      footer: columnData => currencyFormat(columnData.reduce((acc, item) => formatNumber(acc) + formatNumber(item), 0)),
       footerStyle: {
         backgroundColor: '#e0f2fe',
       }
@@ -122,6 +123,7 @@ const DailyRevenue = () => {
 
   const readFile = () => {
     var f = file;
+    if (!f) return swal('Warning', 'Harap upload file terlebih dahulu sebelum generate report', 'warning');
     const reader = new FileReader();
     setIsLoading(true);
     reader.onload = (evt) => {
@@ -236,6 +238,8 @@ const DailyRevenue = () => {
     if (dataTable.length) {
       document.querySelector('body').style.backgroundColor = '#FFF';
     }
+
+    return () => document.querySelector('body').style.backgroundColor = '#E4E5E6';
   }, [dataTable]);
 
   return (
@@ -269,7 +273,7 @@ const DailyRevenue = () => {
           </ToolkitProvider>
         </div>
         :
-        <div className='w-100 d-flex flex-column justify-content-center align-items-center'>
+        <div id='upload_drag_drop' className='w-100 d-flex flex-column justify-content-center align-items-center'>
           <FileUploader
             multiple={false}
             handleChange={filePathset}

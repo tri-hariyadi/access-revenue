@@ -1,7 +1,14 @@
-export * from './AuthAction';
-export * from './UserAction';
-export * from './AbsentAction';
-export * from './ReimbursementAction';
-export * from './AttendanceTagAction';
-export * from './KasAction';
-export * from './TypeOffWorkAction';
+import { successDispatch } from "../dispatches"
+import { types } from "../types"
+
+export const saveMonthlyRevenue = (data, formValues) => (dispatch) => {
+  const payload = {
+    dataTable: data,
+    formValues
+  }
+  successDispatch(dispatch, types.MOTHLY_REVENUE, payload);
+}
+
+export const saveMonthlyJSON = (dataJson) => (dispatch) => {
+  successDispatch(dispatch, types.MOTHLY_REVENUE_JSON, dataJson);
+}

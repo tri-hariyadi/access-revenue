@@ -34,9 +34,9 @@ const TextField = ({
       <Input
         type={type}
         name={name}
-        id={id}
+        id={id || name}
         disabled={disabled}
-        placeholder={placeholder}
+        placeholder={placeholder || label}
         autoComplete={autoComplete}
         valid={!errors[name] && values[name] ? true : false}
         invalid={touched[name] && !!errors[name] ? true : false}
@@ -49,7 +49,7 @@ const TextField = ({
         }}
         onBlur={handleBlur}
         onKeyDown={onKeyDown}
-        value={!textTransform ? `${values[name].charAt(0).toUpperCase()}${values[name].slice(1)}` : format ? format(values[name]) : values[name]}
+        value={!textTransform && values[name] ? `${values[name].charAt(0).toUpperCase()}${values[name].slice(1)}` : format && values[name] ? format(values[name]) : values[name]}
         style={Object.assign({}, textTransform ? { textTransform: textTransform } : {}, style)}
         className='text-field' />
       {secureTextEntry && <i
@@ -78,6 +78,10 @@ TextField.propTypes = {
   label: propTypes.string,
   style: propTypes.object,
   disabled: propTypes.bool
+}
+
+TextField.defaultProps = {
+  type: 'text'
 }
 
 export default React.memo(TextField, compare);

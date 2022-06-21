@@ -19,6 +19,16 @@ export const formatTime = date => {
 export const errHandle = err => err.response ? err.response.data.message : err.message;
 
 export const currencyFormat = value => {
+  let num = value ? parseFloat(value.toString().replace(/,/g, '.')) : 0;
+  let formatter = new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 2
+  });
+  return formatter.format(num);
+}
+
+export const inputCurrencyFormat = value => {
   let num = value ? Number(value.toString().replace(/[^\d]/g, '')) : 0;
   let formatter = new Intl.NumberFormat('id-ID', {
     style: 'currency',
@@ -30,13 +40,23 @@ export const currencyFormat = value => {
 
 export const formatNumber = (value) => {
   if (typeof value === 'string') {
-    if (!isNaN(Number(value))) {
-      return Number(value.replace(/,/gi, '.'));
+    if (!isNaN(parseFloat(value))) {
+      return parseFloat(parseFloat(value.replace(/,/gi, '.')).toFixed(2));
     }
     return 0;
   }
   if (typeof value === 'number') {
-    return value;
+    return parseFloat(parseFloat(value.toString().replace(/,/gi, '.')).toFixed(2));
   }
   return 0;
+}
+
+export const percentageFormat = (value) => {
+  if (typeof value === 'undefined') {
+    return "0.00 %";
+  }
+  if (!isNaN(parseFloat(value))) {
+    return `${parseFloat(value).toFixed(2)}%`;
+  }
+  return "0.00 %";
 }

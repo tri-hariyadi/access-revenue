@@ -1,4 +1,5 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent } from 'react';
+import { Card, CardBody } from 'reactstrap';
 
 export class Dashboard extends PureComponent {
 
@@ -8,7 +9,12 @@ export class Dashboard extends PureComponent {
 
   render() {
     return (
-      <div>{this.showText()}Dashboard</div>
+      <Card>
+        <CardBody>
+          <h2>Halo Sales</h2>
+          <p>Selamat Datang di aplikasi Access Revenue</p>
+        </CardBody>
+      </Card>
     )
   }
 }

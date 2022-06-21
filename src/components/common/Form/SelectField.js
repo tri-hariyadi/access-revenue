@@ -28,7 +28,7 @@ const SelectField = React.memo(({
       <Label style={hideLabel ? { visibility: 'hidden' } : {}} for={id} className='text-filed-label'>{label}</Label>
       <Select
         name={name}
-        inputId={id}
+        inputId={id || name}
         loadingMessage={() => <div><span>Loading...</span><i className="fa fa-spinner fa-pulse ml-2" /></div>}
         isLoading={isLoading}
         valid={!errors[name] && values[name] ? true : false}
@@ -46,7 +46,7 @@ const SelectField = React.memo(({
         menuPortalTarget={menuPortalTarget}
         options={options ? options : []}
         isDisabled={disabled}
-        placeholder={placeholder}
+        placeholder={placeholder || label}
         className={`select-field w-100 ${errors[name] && touched[name] ? 'is-invalid' : values[name] ? 'is-valid' : ''}`}
         isSearchable={isSearchable}
         noOptionsMessage={() => noOptionsMessage || 'Data Tidak Ditemukan'}

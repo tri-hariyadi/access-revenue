@@ -1,7 +1,7 @@
 // Variable overrides
 @font-face {
   font-family: FSAlbert;
-  src: url(./fonts/FSAlbert-Regular.otf) format('truetype');
+  src: url(./fonts/Poppins-Regular.ttf) format('truetype');
   font-weight: 400;
   font-style: normal;
 }
@@ -9,6 +9,8 @@
 @font-face {
   font-family: FSAlbertBold;
   src: url(./fonts/FSAlbert-Bold.otf) format('truetype');
+  font-weight: 600;
+  font-style: normal;
 }
 
 @font-face {

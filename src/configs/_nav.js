@@ -8,7 +8,12 @@ export default {
     {
       name: 'Daily Revenue',
       url: '/daily-revenue',
-      icon: 'icon-speedometer'
+      icon: 'fa fa-book'
+    },
+    {
+      name: 'Monthly Revenue',
+      url: '/monthly-revenue',
+      icon: 'fa fa-book'
     },
   ]
 };
