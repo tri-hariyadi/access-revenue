@@ -41,12 +41,12 @@ export const inputCurrencyFormat = value => {
 export const formatNumber = (value) => {
   if (typeof value === 'string') {
     if (!isNaN(parseFloat(value))) {
-      return parseFloat(parseFloat(value.replace(/,/gi, '.')).toFixed(2));
+      return parseFloat(parseFloat(value.replace(/,/gi, '')).toFixed(2));
     }
     return 0;
   }
   if (typeof value === 'number') {
-    return parseFloat(parseFloat(value.toString().replace(/,/gi, '.')).toFixed(2));
+    return parseFloat(parseFloat(value.toString().replace(/,/gi, '')).toFixed(2));
   }
   return 0;
 }

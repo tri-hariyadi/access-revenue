@@ -161,12 +161,16 @@ const DailyRevenue = () => {
       var currentline = lines[i].split("#~");
       
       for (var j = 0; j < headers.length; j++) {
-        if (currentline[j]) obj[headers[j]] = currentline[j];
+        let k = headers[j];
+        if (headers[j][0] === ' ') k = headers[j].split('').slice(1).join('');
+        if (headers[j][headers[j].length-1] === ' ') k = k.split('').slice(0, -1).join('');
+        if (currentline[j]) obj[k] = currentline[j];
       }
 
       if (Object.keys(obj).length) result.push(obj);
     }
 
+    console.log(result);
     return result; //JSON
   }
 
@@ -175,6 +179,7 @@ const DailyRevenue = () => {
       dataJson.current.forEach(item => {
         if (item['Nama Customer'] === b.current[i]) {
           const index = temp.current.findIndex(x => x['Nama Customer'] === item['Nama Customer']);
+          // console.log(item['Biaya']);
           if (index < 0) {
             const newItem = {
               'id': i,
