@@ -170,7 +170,6 @@ const DailyRevenue = () => {
       if (Object.keys(obj).length) result.push(obj);
     }
 
-    console.log(result);
     return result; //JSON
   }
 
@@ -179,7 +178,6 @@ const DailyRevenue = () => {
       dataJson.current.forEach(item => {
         if (item['Nama Customer'] === b.current[i]) {
           const index = temp.current.findIndex(x => x['Nama Customer'] === item['Nama Customer']);
-          // console.log(item['Biaya']);
           if (index < 0) {
             const newItem = {
               'id': i,
@@ -208,6 +206,7 @@ const DailyRevenue = () => {
     }
     setDataTable(temp.current);
     setIsLoading(false);
+    dataExported.current = temp.current;
   }
 
   const exportToExcel = () => {
